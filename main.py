@@ -32,7 +32,7 @@ def main():
                 # driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
                 ### Variablize Items
                 name = str(item[0])
-                url = item[1]
+                url = "https://na.mabibase.com/tools/auction-house?server=mabius6&q=ItemId%2Ceq%2C%22"+ item[1] + "%22&sort=ItemPrice%3AAscending&page=0"
                 priceAlert = int(item[2])
                 
                 driver.get(url)
