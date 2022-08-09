@@ -13,6 +13,7 @@ discord = Discord(url=input.discordURL())
 
 ### Chrome Driver Setup
 chrome_options = Options()
+chrome_options.add_argument("--log-level=3")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=1920,1080")
 driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
@@ -51,7 +52,7 @@ def main():
                     print("alert price at: " +  str(f'{priceAlert:,}') )
                     print("")
 
-                    if unitPrice < priceAlert:
+                    if unitPrice <= priceAlert:
                         discord.post(content="BUY " + name + " at " + str(f'{unitPrice:,}') + " ( Alert Set at : " +  str(f'{priceAlert:,}') + " )")
 
                 # driver.quit()
