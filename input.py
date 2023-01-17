@@ -6,44 +6,34 @@
 def itemList():
     watchList = [
         [
-            "Kraken Heart",
-            "64123",
-            "270000000"
+            "Desecrated Charm Chunk",
+            "64682",
+            "2500000"
         ],
         [
-            "Hayashi Boots",
-            "17772",
+            "Surging Hope Gem",
+            "5050007",
+            "14000000"
+        ],
+        [
+            "Divine Mineral Fragment",
+            "64680",
+            "30000"
+        ],
+        [
+            "Blossoming Hope Gem",
+            "5050008",
             "2000000"
         ],
         [
-            "Mysterious Shard",
-            "64108",
-            "2000000"
-        ],
-        [
-            "Condensed Strength Fragment: Knuckles",
-            "5100046",
-            "3000000"
-        ],
-        [
-            "Adamantine",
-            "5100038",
-            "35000000"
-        ],
-        [
-            "Glas Ghaibhleann Heart",
-            "5100039",
-            "35000000"
-        ],
-        [
-            "Damage Glas Ghaibhleann Feather",
-            "5100040",
-            "35000000"
+            "Daring Duckling Banana Dual Gun Appearance Scroll",
+            "5040111",
+            "15000000"
         ]
     ]
 
     return watchList
 
 def discordURL():
-    URL="enter discord webhook url here"
+    URL=""
     return URL

@@ -5,19 +5,19 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from discordwebhook import Discord
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.edge.options import Options
+from selenium.webdriver.edge.service import Service as EdgeService
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 import input
 
 ### Discord setup
 discord = Discord(url=input.discordURL())
 
-### Chrome Driver Setup
-chrome_options = Options()
-chrome_options.add_argument("--log-level=3")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--window-size=1920,1080")
-driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+### Edge Driver Setup
+options = Options()
+options.headless = True
+options.add_argument("--log-level=3")
+driver = webdriver.Edge(EdgeChromiumDriverManager().install(), options= options)
 
 ### Create empty dictionary to keep track of item alert
 itemAlertDict = {}
@@ -43,7 +43,7 @@ def main():
                 priceAlert = int(item[2])
                 
                 driver.get(url)
-                time.sleep(5)
+                time.sleep(6)
                 soup = BeautifulSoup(driver.page_source, 'html.parser')
                 firstRow = soup.find_all("tr" , class_='MuiTableRow-root')[1]
                 # print(firstRow.text)
