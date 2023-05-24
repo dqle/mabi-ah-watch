@@ -13,14 +13,12 @@ import input
 discord = Discord(url=input.discordURL())
 
 ### Chrome Driver Setup
-def initialize_webdriver():
-    print("Initializing webdriver...")
-    global driver
-    chrome_options = Options()
-    chrome_options.add_argument("--log-level=3")
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--window-size=1920,1080")
-    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+print("Initializing webdriver...")
+chrome_options = Options()
+chrome_options.add_argument("--log-level=3")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--window-size=1920,1080")
+driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 
 ### Create empty dictionary to keep track of item alert
 itemAlertDict = {}
@@ -28,16 +26,10 @@ itemAlertDict = {}
 ### Time to resend alert to discord bot in seconds -- this is based on mabibase 5 min refresh rate
 timeAlert = 300
 
-# def restart():
-#     print("argv was",sys.argv)
-#     print("sys.executable was", sys.executable)
-#     print("restart now")
-
-#     os.execv(sys.executable, ['python'] + sys.argv)
 
 def main():
+    discord.post(content= "Application Started Successfully")
     try:
-        initialize_webdriver()
         while True:
             for item in input.itemList():
                 ### Variablize Items
@@ -75,10 +67,8 @@ def main():
                     print("---")
     except Exception as e:
         print(e)
-        print("Exiting webdriver...")
-        driver.quit()
-        # restart()
-        main()
+        discord.post(content= "Application Errored - Shutting Down")
+        quit()
 
             
     

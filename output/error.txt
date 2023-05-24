@@ -1,0 +1,88 @@
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:23: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:23: DeprecationWarning: use options instead of chrome_options
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+Traceback (most recent call last):
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 86, in <module>
+    main()
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 50, in main
+    time.sleep(5)
+KeyboardInterrupt
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:23: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:23: DeprecationWarning: use options instead of chrome_options
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+Traceback (most recent call last):
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 86, in <module>
+    main()
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 50, in main
+    time.sleep(5)
+KeyboardInterrupt
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:23: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:23: DeprecationWarning: use options instead of chrome_options
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+Traceback (most recent call last):
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 86, in <module>
+    main()
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 50, in main
+    time.sleep(5)
+KeyboardInterrupt
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:21: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:21: DeprecationWarning: use options instead of chrome_options
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+Traceback (most recent call last):
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 76, in <module>
+    main()
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 41, in main
+    driver.get(url)
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 455, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 442, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 294, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 316, in _request
+    response = self._conn.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\request.py", line 78, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 376, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+                       ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1376, in getresponse
+    self.close()
+  File "C:\Users\Mabi-AH\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 953, in close
+    def close(self):
+
+KeyboardInterrupt
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:21: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:21: DeprecationWarning: use options instead of chrome_options
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+Traceback (most recent call last):
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 76, in <module>
+    main()
+  File "C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py", line 42, in main
+    time.sleep(5)
+KeyboardInterrupt
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:21: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+C:\Users\Mabi-AH\Documents\VSCode\mabi-ah-watch\main.py:21: DeprecationWarning: use options instead of chrome_options
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
