@@ -1,16 +1,64 @@
 import time
 import sys 
 import os
+import subprocess
+import random
+import requests
+import input
+from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from datetime import datetime
 from discordwebhook import Discord
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-import input
+
+### Load Environment Variable from input.env file
+load_dotenv()
+DISCORD_BUY_WEBHOOK = os.getenv("DISCORD_BUY_WEBHOOK")
+DISCORD_SYSTEM_WEBHOOK = os.getenv("DISCORD_SYSTEM_WEBHOOK")
 
 ### Discord setup
-discord = Discord(url=input.discordURL())
+discord = Discord(url=DISCORD_BUY_WEBHOOK)
+discordSystem = Discord(url=DISCORD_SYSTEM_WEBHOOK)
+discordSystem.post(content= "-----------------------------------------------")
+
+#PIA Regions -- use `piactl get regions`
+regions = ["us-salt-lake-city", "us-honolulu", "us-california", "us-west", "us-west-streaming-optimized", "us-silicon-valley", "us-seattle", "us-new-mexico", "us-wyoming", "us-mississippi", "us-montana", "us-north-dakota", "us-denver", "us-louisiana", "us-oklahoma", "us-south-dakota", "us-arkansas", "us-kansas", "us-missouri", "us-oregon", "us-north-carolina", "us-south-carolina", "us-kentucky", "us-tennessee", "us-west-virginia", "us-alabama", "us-atlanta", "us-virginia", "us-idaho", "us-nebraska", "us-indiana", "us-michigan", "us-chicago", "us-minnesota", "us-ohio", "us-iowa", "us-wisconsin", "us-florida", "us-washington-dc", "us-connecticut", "us-new-york", "us-rhode-island", "us-baltimore", "us-east", "us-east-streaming-optimized", "us-massachusetts", "us-new-hampshire", "us-pennsylvania", "us-vermont", "us-maine", "panama", "ca-vancouver", "ca-ontario", "ca-toronto", "ca-montreal"]
+
+### Start PIA VPN
+subprocess.run(["C:\Program Files\Private Internet Access\piactl.exe", "disconnect"])
+subprocess.run(["C:\Program Files\Private Internet Access\piactl.exe", "set", "region", random.choice(regions)])
+subprocess.run(["C:\Program Files\Private Internet Access\piactl.exe", "connect"])
+currentRegion = subprocess.run(["C:\Program Files\Private Internet Access\piactl.exe", "get", "region"], capture_output=True, text=True).stdout.strip()
+
+### Verify external IP is PIA VPN
+myIP      = "172.250.195.187"
+waitIPCount = 0
+while (requests.get('https://www.wikipedia.org').headers['X-Client-IP']) == myIP:
+    waitIPCount += 1
+    print("wait count is {}".format(waitIPCount))
+    time.sleep(6)
+    if waitIPCount == 10:
+        discordSystem.post(content= ":x: Timed out waiting for PIA IP.")
+        discordSystem.post(content= ":rewind: Exiting App and reconnecting to PIA VPN.")
+        quit()
+discordSystem.post(content= ":white_check_mark: PIA VPN IP Check Passed")
+
+### Verify MabiBase is accessible
+currentRegion = subprocess.run(["C:\Program Files\Private Internet Access\piactl.exe", "get", "region"], capture_output=True, text=True).stdout.strip()
+mabibaseResponse = requests.head("https://na.mabibase.com/items/search").status_code
+
+if mabibaseResponse != 200 or mabibaseResponse != 301:
+    if mabibaseResponse == 403:
+        discordSystem.post(content= ":x: MabiBase Banned.")
+    else:
+        discordSystem.post(content= ":x: MabiBase is not accessible.")
+        discordSystem.post(content= ":warning: HTTP Response is {}".format(mabibaseResponse))
+    discordSystem.post(content= ":warning: PIA VPN Region is `{}`".format(currentRegion))
+    discordSystem.post(content= ":rewind: Exiting App and reconnecting to PIA VPN.")
+    quit()
+discordSystem.post(content= ":white_check_mark: MabiBase Accessibility Check Passed")
 
 ### Chrome Driver Setup
 print("Initializing webdriver...")
@@ -26,9 +74,8 @@ itemAlertDict = {}
 ### Time to resend alert to discord bot in seconds -- this is based on mabibase 5 min refresh rate
 timeAlert = 300
 
-
 def main():
-    discord.post(content= "Application Started Successfully")
+    discordSystem.post(content= ":white_check_mark: Application Started Successfully")
     try:
         while True:
             for item in input.itemList():
@@ -39,7 +86,7 @@ def main():
                 priceAlert = int(item[2])
                 
                 driver.get(url)
-                time.sleep(5)
+                time.sleep(10)
                 soup = BeautifulSoup(driver.page_source, 'html.parser')
                 firstRow = soup.find_all("tr" , class_='MuiTableRow-root')[1]
                 # print(firstRow.text)
@@ -67,7 +114,7 @@ def main():
                     print("---")
     except Exception as e:
         print(e)
-        discord.post(content= "Application Errored - Shutting Down")
+        discordSystem.post(content= ":x: Application Errored - Shutting Down")
         quit()
 
             
