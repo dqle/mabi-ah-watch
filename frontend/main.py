@@ -65,21 +65,11 @@ def delete_item():
     collection.delete_one({ "name": delete_item_name })
     return flask.redirect(flask.url_for('index'))
 
-@app.route('/test-add', methods=['POST'])
-def test_add():
+@app.route('/bulk-add', methods=['POST'])
+def bulk_add():
     collection = get_collection()
-    items = [
-        {"name": "Ancient Monster Core", "id": "64681", "price": "1000000"},
-        {"name": "Desecrated Charmed Chunk", "id": "35415", "price": "1000000"}
-    ]
+    items = flask.request.json
     collection.insert_many(items)
-    return flask.Response(status=200)
-
-@app.route('/test-delete', methods=['POST'])
-def test_delete():
-    collection = get_collection()
-    item = "Desecrated Charm Chunk"
-    collection.delete_one({ "name": item })
     return flask.Response(status=200)
 
 if __name__ == '__main__':
