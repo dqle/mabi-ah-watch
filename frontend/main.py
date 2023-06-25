@@ -1,11 +1,18 @@
 import flask
 import logging
 import pymongo
+import os
+from dotenv import load_dotenv
+
+### Load Environment Variable from input.env file
+load_dotenv()
+MONGODB_USER = os.getenv("MONGODB_USER")
+MONGODB_PASWORD = os.getenv("MONGODB_PASWORD")
 
 def get_collection():
  
    # Provide the mongodb atlas url to connect python to mongodb using pymongo
-   CONNECTION_STRING = "mongodb+srv://<username>:<password>@mabi-ah.hdehgcc.mongodb.net/?retryWrites=true&w=majority"
+   CONNECTION_STRING = "mongodb+srv://{}:{}@mabi-ah.hdehgcc.mongodb.net/?retryWrites=true&w=majority".format(MONGODB_USER,MONGODB_PASWORD)
  
    # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
    client = pymongo.MongoClient(CONNECTION_STRING)
