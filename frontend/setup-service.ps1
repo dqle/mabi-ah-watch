@@ -1,7 +1,6 @@
 #####
-$serviceName = "Mabi-AH"
+$serviceName = "Mabi-AH-Frontend"
 $mainFile = $pwd.Path + "\main.py"
-$errorFileDir = $pwd.Path + "\output\error.txt"
 
 
 .\nssm install $serviceName python $mainFile

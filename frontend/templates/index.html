@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <title>Mabi Aunction House Watcher</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+</head>
+<body>
+  <form name="add-item" method='post' id="add-item-form">
+    <p>
+      <label for="Name">Name:</label> 
+      <input type="text" name="name" id="name-form" onkeyup='saveValue(this);'>
+    </p>
+    <p>
+      <label for="Id">Id:</label>
+      <input type="number" name="id" id="id-form" onkeyup='saveValue(this);'>
+    </p>
+    <p>
+      <label for="Price">Price:</label>
+      <input type="number" name="price" id="price-form" onkeyup='saveValue(this);'>
+    </p>
+    <input type="button" value="Add to AH Watch" onclick="AddItem()">
+    <input type="button" value="Clear" onclick="clear_form()"><br>
+  </form> 
+  <table id="fancytable">
+    <tr>
+    {% for header in headers %}
+      <th>{{ header }}</th>
+    {% endfor %}
+    </tr>
+    {% for listing in listings %}
+    <tr>
+      <td id="name-td">{{ listing["name"] }}</td>
+      <td id="id-td">{{ listing["id"] }}</td>
+      <td id="price-td">{{ listing["price"] }}</td>
+      <td>
+        <input type="button" value="Delete Row" onclick="DeleteRow(this)">
+      </td>
+    </tr>
+    {% endfor %}
+  </table>  
+</body>
+</html>

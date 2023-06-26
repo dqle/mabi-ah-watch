@@ -4,3 +4,6 @@ webdriver-manager
 discordwebhook
 requests
 python-dotenv
+flask
+pymongo
+schedule
